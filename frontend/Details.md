@@ -1,3 +1,33 @@
+# Work Done List -
+## Backend
+1. Authentication Backend
+
+## Frontend
+1. Navbar
+2. Hero Section (image is remaining)
+3. Footer 
+4. Faqs
+5. Authform [ Login and Signup ]
+6. About Section 
+
+# Remaining work
+1. Module Page F/B
+```
+<Navbar/>
+<ModuleHero/>
+<ModuleList/> → <ModuleCard/>
+```
+2. Quiz Page
+3. Logout backend integration
+4. Research regarding topics and ideation of the website overall
+
+
+
+
+
+
+
+
 For a MERN (MongoDB, Express, React, Node.js) project, a well-organized directory structure is crucial to manage and scale the application effectively. Here’s a recommended directory structure that aligns with the nature of your project, which includes educational content and quizzes:
 
 ### Directory Structure
@@ -10,14 +40,17 @@ mern-quiz-app/
 │   ├── controllers/
 │   │   ├── authController.js
 │   │   ├── quizController.js
-│   │   └── userController.js
+│   │   ├── userController.js
+│   │   └── subjectController.js
 │   ├── models/
 │   │   ├── User.js
-│   │   └── Quiz.js
+│   │   ├── Quiz.js
+│   │   └── Subject.js
 │   ├── routes/
 │   │   ├── authRoutes.js
 │   │   ├── quizRoutes.js
-│   │   └── userRoutes.js
+│   │   ├── userRoutes.js
+│   │   └── subjectRoutes.js
 │   ├── middleware/
 │   │   ├── authMiddleware.js
 │   │   └── errorMiddleware.js
@@ -38,19 +71,23 @@ mern-quiz-app/
 │   │   │   ├── QuizCard.js
 │   │   │   ├── QuizList.js
 │   │   │   ├── Question.js
-│   │   │   └── Dropdown.js
+│   │   │   ├── Dropdown.js
+│   │   │   └── SubjectCard.js
 │   │   ├── pages/
 │   │   │   ├── HomePage.js
 │   │   │   ├── QuizPage.js
 │   │   │   ├── LoginPage.js
 │   │   │   ├── RegisterPage.js
-│   │   │   └── AboutPage.js
+│   │   │   ├── AboutPage.js
+│   │   │   └── SubjectPage.js
 │   │   ├── context/
 │   │   │   ├── AuthContext.js
 │   │   │   └── QuizContext.js
+│   │   │   └── SubjectContext.js
 │   │   ├── services/
 │   │   │   ├── authService.js
-│   │   │   └── quizService.js
+│   │   │   ├── quizService.js
+│   │   │   └── subjectService.js
 │   │   ├── App.css
 │   │   ├── App.js
 │   │   ├── index.css

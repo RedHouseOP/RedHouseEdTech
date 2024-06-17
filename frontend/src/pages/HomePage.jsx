@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import HeroSection from '../components/HeroSection';
 import About from '../components/About';
 import FAQ from '../components/Faqs';

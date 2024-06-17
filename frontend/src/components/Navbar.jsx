@@ -26,7 +26,7 @@ function NavbarComponent() {
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">RedHouseEdTech</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">RedHouseEdTech</Navbar.Brand>
             <div className="mx-auto">
               <Form className="d-flex">
                 <FormControl
@@ -40,9 +40,10 @@ function NavbarComponent() {
             </div>
           <Nav className="ml-auto d-flex align-items-center">
           <Nav.Link as={Link} className='mx-2' to="/">Home</Nav.Link>
-            <Nav.Link classNAme='mx-2' onClick={scrollToAbout}> About</Nav.Link>
+            <Nav.Link className='mx-2' onClick={scrollToAbout}> About</Nav.Link>
             <Nav.Link className='mx-2' onClick={scrollToContactUs}>Support</Nav.Link>
-            <Nav.Link as={Link} className='mx-2' to="/login">Login / Signup</Nav.Link>
+            <Nav.Link as={Link} className='mx-2' to="/login">Login</Nav.Link>
+            <Nav.Link as={Link} className='mx-2' to="/subject">Subjects</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
