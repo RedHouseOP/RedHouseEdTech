@@ -7,7 +7,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-function ColorSchemesExample() {
+function NavbarComponent() {
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
@@ -28,7 +28,7 @@ function ColorSchemesExample() {
           <Nav.Link as={Link} className='mx-2' to="/">Home</Nav.Link>
             <Nav.Link as={Link} className='mx-2' to="/about">About</Nav.Link>
             <Nav.Link as={Link} className='mx-2' to="/support">Support</Nav.Link>
-            <Nav.Link as={Link} className='mx-2' to="/login">Login</Nav.Link>
+            <Nav.Link as={Link} className='mx-2' to="/login">Login / Signup</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -37,4 +37,4 @@ function ColorSchemesExample() {
   );
 }
 
-export default ColorSchemesExample;
+export default NavbarComponent;
