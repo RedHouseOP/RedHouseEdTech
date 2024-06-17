@@ -1,4 +1,3 @@
-import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,6 +7,21 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
 function NavbarComponent() {
+  const scrollToContactUs = () => {
+    const contactSection = document.getElementById('contactUs');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+
+  const scrollToAbout=()=>{
+    const aboutSection=document.getElementById('About');
+    if(aboutSection){
+      aboutSection.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  };
+
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark">
@@ -26,8 +40,8 @@ function NavbarComponent() {
             </div>
           <Nav className="ml-auto d-flex align-items-center">
           <Nav.Link as={Link} className='mx-2' to="/">Home</Nav.Link>
-            <Nav.Link as={Link} className='mx-2' to="/about">About</Nav.Link>
-            <Nav.Link as={Link} className='mx-2' to="/support">Support</Nav.Link>
+            <Nav.Link classNAme='mx-2' onClick={scrollToAbout}> About</Nav.Link>
+            <Nav.Link className='mx-2' onClick={scrollToContactUs}>Support</Nav.Link>
             <Nav.Link as={Link} className='mx-2' to="/login">Login / Signup</Nav.Link>
           </Nav>
         </Container>

@@ -1,9 +1,8 @@
-import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const ContactUs = () => {
     return (
-        <section className='my-5' style={{
+        <section id="contactUs" className='my-5' style={{
             background: '#1a202c', color: '#cbd5e0', paddingTop: '3rem', paddingBottom: '6rem', borderRadius: '25px',
             overflow: 'hidden',
             boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'
