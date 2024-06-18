@@ -1,6 +1,11 @@
-
 import { Row, Col, Container, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 const HeroSection = () => {
+    let navigate = useNavigate();
+    const handleOnClick = () => {
+        navigate('/subject')
+    }
+
     return (
         <div>
             <Container fluid style={{
@@ -14,7 +19,7 @@ const HeroSection = () => {
                         <p className="my-4">
                             Discover a wealth of knowledge on personal safety, sex education, traffic rules, and more. Our interactive quizzes and story-based modules are designed to educate and engage learners of all ages. Start your journey to a safer, smarter, and more informed life today.
                         </p>
-                        <Button variant="primary" size="lg">Start Learning →</Button>
+                        <Button onClick={handleOnClick} variant="primary" size="lg">Start Learning →</Button>
                     </Col>
                     <Col md={6} className="text-center">
                         <img src="https://via.placeholder.com/600x400" alt="Hero" className="img-fluid" />

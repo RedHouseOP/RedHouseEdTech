@@ -19,7 +19,7 @@ export default function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/login" element={<AuthForm />} />
                         <Route path="/subject" element={<SubjectPage />} />
-                        <Route path="/concept/:title" element={<ConceptIntro />} />
+                        <Route path="/concept/" element={<ConceptIntro />} />
                     </Routes>
                 </SubjectProvider>
             </div>

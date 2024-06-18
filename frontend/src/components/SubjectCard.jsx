@@ -1,10 +1,9 @@
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-
 const SubjectCard = ({ subject }) => {
-
     const navigate = useNavigate();
+
     return (
         <>
             <style type="text/css">
@@ -38,14 +37,10 @@ const SubjectCard = ({ subject }) => {
 
                     .custom-card .card-title {
                         margin-bottom: 0.5rem;
-                        // font-size: 1.25rem;
-                        // font-weight: 600;
                         color: #1a202c;
                     }
 
                     .custom-card .card-text {
-                        // font-size: 1rem;
-                        // font-weight: 300;
                         color: inherit;
                     }
 
@@ -82,7 +77,13 @@ const SubjectCard = ({ subject }) => {
                 <Card.Body>
                     <Card.Title>{subject.name}</Card.Title>
                     <Card.Text>{subject.description}</Card.Text>
-                    <Button className="custom-button" onClick={()=>navigate(`/concept/${subject._id}`)}style={{ cursor: 'pointer'}}>
+                    <Button 
+                        className="custom-button" 
+                        // ! Removed this cuz passing the subjectId throgh URL isn't a good practice even though we are passing the whole object itself so no need to pass the id through the url again
+                        // onClick={() => navigate(`/concept/${subject._id}`, { state: { subject } })}
+                        onClick={() => navigate(`/concept`, { state: { subject } })}
+                        style={{ cursor: 'pointer'}}
+                    >
                         Start →
                     </Button>
                 </Card.Body>
