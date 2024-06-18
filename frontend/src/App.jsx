@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import SubjectPage from './pages/SubjectPage';
 import AuthForm from './pages/AuthForm';
+import ConceptIntro from './pages/ConceptIntro';
 import { SubjectProvider } from './context/subjectContext';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/login" element={<AuthForm />} />
                         <Route path="/subject" element={<SubjectPage />} />
+                        <Route path="/concept/:title" element={<ConceptIntro />} />
                     </Routes>
                 </SubjectProvider>
             </div>

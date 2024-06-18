@@ -1,7 +1,10 @@
-import React from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 
 const SubjectCard = ({ subject }) => {
+
+    const navigate = useNavigate();
     return (
         <>
             <style type="text/css">
@@ -79,7 +82,7 @@ const SubjectCard = ({ subject }) => {
                 <Card.Body>
                     <Card.Title>{subject.name}</Card.Title>
                     <Card.Text>{subject.description}</Card.Text>
-                    <Button className="custom-button">
+                    <Button className="custom-button" onClick={()=>navigate(`/concept/${subject._id}`)}style={{ cursor: 'pointer'}}>
                         Start →
                     </Button>
                 </Card.Body>
