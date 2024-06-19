@@ -7,6 +7,8 @@ import HomePage from './pages/HomePage';
 import SubjectPage from './pages/SubjectPage';
 import AuthForm from './pages/AuthForm';
 import ConceptIntro from './pages/ConceptIntro';
+import QuizPage from './pages/QuizPage';
+import QuizResultPage from './pages/QuizResultPage';
 import { SubjectProvider } from './context/subjectContext';
 
 export default function App() {
@@ -19,7 +21,9 @@ export default function App() {
                         <Route path="/" element={<HomePage />} />
                         <Route path="/login" element={<AuthForm />} />
                         <Route path="/subject" element={<SubjectPage />} />
-                        <Route path="/concept/" element={<ConceptIntro />} />
+                        <Route path="/concept" element={<ConceptIntro />} />
+                        <Route path="/quiz" element={<QuizPage />} />
+                        <Route path="/quiz-result" element={<QuizResultPage />} />
                     </Routes>
                 </SubjectProvider>
             </div>

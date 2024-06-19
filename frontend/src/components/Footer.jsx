@@ -1,10 +1,7 @@
-
 import { Container, Row, Col, Nav, Image } from 'react-bootstrap';
-// import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
-
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white py-5">
+    <footer className="bg-dark text-white py-5" style={{ background: 'linear-gradient(to right, #0D1A1F, #214551)' }}>
       <Container>
         <Row>
           <Col md={4}>
@@ -16,10 +13,10 @@ const Footer = () => {
           <Col md={4}>
             <h5>Quick Links</h5>
             <Nav className="flex-column">
-              <Nav.Link href="/" className="text-white">Home</Nav.Link>
-              <Nav.Link href="/about" className="text-white">About</Nav.Link>
-              <Nav.Link href="/support" className="text-white">Support</Nav.Link>
-              <Nav.Link href="/login" className="text-white">Login</Nav.Link>
+              <Nav.Link className="text-white">Home</Nav.Link>
+              <Nav.Link className="text-white">About</Nav.Link>
+              <Nav.Link className="text-white">Support</Nav.Link>
+              <Nav.Link className="text-white">Login</Nav.Link>
             </Nav>
           </Col>
           <Col md={4}>

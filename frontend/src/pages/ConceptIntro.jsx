@@ -15,7 +15,7 @@ const ConceptIntro = () => {
         }
     }, [location, navigate]);
 
-    // ? While rendering of the component the if condition is checked first before useEffect() because useEffect() is not called before the componenet finishes its rendering.. so to avoid the component to attemp a false rendering if condition returns null resulting in immidiate completion of the component & causes useEffect() to be called which then handles the redirection
+    // ? While rendering of the component the if condition is checked first before useEffect() because useEffect() is not called before the component finishes its rendering.. so to avoid the component to attemp a false rendering if condition returns null resulting in immidiate completion of the component & causes useEffect() to be called which then handles the redirection
 
     if (!location.state || !location.state.subject) {
         return null; 
@@ -80,7 +80,7 @@ const ConceptIntro = () => {
                 </Row>
             </Container>
             <div className="text-center my-5">
-                <Button variant="primary" size="lg">Start The Quiz →</Button>
+                <Button variant="primary" size="lg" onClick={() => navigate(`/quiz`, { state: { subject } })}>Start The Quiz →</Button>
             </div>
         </>
     );
