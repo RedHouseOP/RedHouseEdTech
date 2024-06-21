@@ -6,6 +6,7 @@ import SubjectCard from '../components/SubjectCard';
 import useAuth from '../hooks/useAuth';
 const SubjectPage = () => {
     useAuth(); 
+    
     // ? To check whether the user is logged in or not
     if (localStorage.getItem('token') == null) {
         return null;

@@ -5,15 +5,15 @@ const About = () => {
         <section className='my-5' id="About" style={{
             borderRadius: '10px',
             overflow: 'hidden',
-            boxShadow: '0 0 10px rgba(102,252,241,1)',
-            backgroundColor: '#1F2833'
+            boxShadow: '0 0 10px rgba(0,0,0,0.3)',
+            backgroundColor: '#FFFFFF'
         }} >
             <Container className='px-5' >
                 <Row className="justify-content-center mb-5">
                     <Col md={12} className="text-center my-5">
-                        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#66FCF1' }}>About Our Mission</h1>
-                        <p style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#66FCF1' }}>
-                            At [Your Website Name], we believe that education is the key to a brighter future. Our mission is to provide accessible, interactive, and engaging learning resources for young adults and adults alike. Whether you are looking to understand your basic human rights, learn essential first aid techniques, or gain insights into personal and traffic safety, we have got you covered.
+                        <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#0089EA' }}>About Our Mission</h1>
+                        <p style={{ fontSize: '1.25rem', marginBottom: '1.5rem' }}>
+                            At RedHouseEdTech, we believe that education is the key to a brighter future. Our mission is to provide accessible, interactive, and engaging learning resources for young adults and adults alike. Whether you are looking to understand your basic human rights, learn essential first aid techniques, or gain insights into personal and traffic safety, we have got you covered.
                         </p>
                     </Col>
                 </Row>

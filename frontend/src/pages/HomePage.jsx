@@ -5,12 +5,25 @@ import FAQ from '../components/Faqs';
 import ContactUs from '../components/ContactUs';
 
 const HomePage = () => {
+    const headingStyle = {
+        textAlign: 'center',
+        marginTop: '20px',
+        fontSize: '2.5rem',
+    };
+
+    const redTextStyle = {
+        color: 'red',
+    };
+
     return (
         <div>
-            <HeroSection/>
-            <About/>
-            <FAQ/>
-            <ContactUs/>
+            <h1 style={headingStyle}>
+                Welcome to <span style={redTextStyle}>RedHouseEdTech</span>
+            </h1>
+            <HeroSection />
+            <About />
+            <FAQ />
+            <ContactUs />
         </div>
     );
 };

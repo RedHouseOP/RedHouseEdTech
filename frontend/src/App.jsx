@@ -10,6 +10,7 @@ import ConceptIntro from './pages/ConceptIntro';
 import QuizPage from './pages/QuizPage';
 import QuizResultPage from './pages/QuizResultPage';
 import { SubjectProvider } from './context/subjectContext';
+import '../input.css'
 
 export default function App() {
     return (

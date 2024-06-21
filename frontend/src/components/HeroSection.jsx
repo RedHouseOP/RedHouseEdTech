@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ReactTypingEffect from 'react-typing-effect';
-import heroSectionImg from '../assets/heroSection.jpg'
+import heroSectionImg from '../assets/heroSection.jpg';
 
 const HeroSection = () => {
     let navigate = useNavigate();
@@ -19,21 +19,33 @@ const HeroSection = () => {
         "Mental Health Awareness",
     ];
 
+    const buttonStyle = {
+        color: '#0089EA',
+        backgroundColor: '#FFF',
+        borderColor: '#0089EA',
+        transition: 'all 0.3s ease',
+    };
+
+    const buttonHoverStyle = {
+        color: '#FFF',
+        backgroundColor: '#0089EA',
+        borderColor: '#0089EA',
+    };
+
     return (
         <div>
             <Container className="my-5" fluid style={{
                 borderRadius: '10px',
                 overflow: 'hidden',
-                boxShadow: '0 0 10px rgba(102,252,241,1)',
-                backgroundColor: '#1F2833'
+                boxShadow: '0 0 10px rgba(0,0,0,0.3)',
             }} >
                 <Row className="align-items-center">
                     <Col md={6} className="text-center text-md-left">
-                        <h1 style={{ color: '#66FCF1' }} className="display-4 font-weight-bold">Empower Yourself with Essential Life Skills</h1>
-                        <p style={{ color: '#66FCF1' }} className="my-4">
+                        <h1 style={{ color: '#0089EA' }} className="display-4">Empower Yourself with Essential Life Skills</h1>
+                        <p style={{ fontSize: '1.25rem' }} className="my-4">
                             Discover a wealth of knowledge on personal safety, sex education, traffic rules, and more. Our interactive quizzes and story-based modules are designed to educate and engage learners of all ages. Start your journey to a safer, smarter, and more informed life today.
                         </p>
-                        <h3 className='my-4' style={{ color: '#66FCF1' }}>
+                        <h3 className='my-4' style={{ color: '#0089EA' }}>
                             <ReactTypingEffect
                                 text={subjects}
                                 speed={100}
@@ -46,7 +58,7 @@ const HeroSection = () => {
                                             {text.split('').map((char, i) => {
                                                 const key = `${i}`;
                                                 return (
-                                                    <span key={key} style={{ color: '#66FCF1' }}>{char}</span>
+                                                    <span key={key} style={{ color: '#0089EA' }}>{char}</span>
                                                 );
                                             })}
                                         </span>
@@ -54,7 +66,16 @@ const HeroSection = () => {
                                 }}
                             />
                         </h3>
-                        <Button style={{ color: '#66FCF1', backgroundColor: '#1F2833', borderColor: '#66FCF1' }} onClick={handleOnClick} variant="primary" size="lg">Get Started</Button>
+                        <Button
+                            style={buttonStyle}
+                            onMouseEnter={(e) => e.currentTarget.style = { ...buttonStyle, ...buttonHoverStyle }}
+                            onMouseLeave={(e) => e.currentTarget.style = buttonStyle}
+                            onClick={handleOnClick}
+                            variant="primary"
+                            size="lg"
+                        >
+                            Get Started
+                        </Button>
                     </Col>
                     <Col md={6} className="text-center">
                         <img src={heroSectionImg} alt="Hero" className="img-fluid" />

@@ -8,12 +8,19 @@ const SubjectSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        required:true,
     },
     introText: {
         type: String,
+        required:true,
+    },
+    imagUrl:{
+        type: String,
+        required:true,
     },
     keyConcepts: {
         type: Array,
+        required:true,
     },
     quizzes: [{
         type: mongoose.Schema.Types.ObjectId,

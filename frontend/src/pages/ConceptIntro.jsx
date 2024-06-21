@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const ConceptIntro = () => {
-    useAuth(); 
+    useAuth();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const ConceptIntro = () => {
     // ? While rendering of the component the if condition is checked first before useEffect() because useEffect() is not called before the component finishes its rendering.. so to avoid the component to attemp a false rendering if condition returns null resulting in immidiate completion of the component & causes useEffect() to be called which then handles the redirection
 
     if (!location.state || !location.state.subject) {
-        return null; 
+        return null;
     }
 
     const { subject } = location.state;
@@ -27,6 +27,28 @@ const ConceptIntro = () => {
 
     return (
         <>
+            <style type="text/css">
+                {`
+                    .open-sans {
+                        font-family: "Open Sans", sans-serif;
+                        font-optical-sizing: auto;
+                        font-weight: 500;
+                        font-style: normal;
+                    }
+                        .concept-box {
+                        margin-top:15px;
+                        border: 2px solid #0089EA;
+                        border-radius: 10px;
+                        color: #000000;
+                        display:flex;
+                        height: 70px;
+                        text-align: center;
+                        align-itmes: center;
+                        justify-content: center;
+                    }
+                `}
+            </style>
+
             <div
                 className="concept-intro"
                 style={{
@@ -67,20 +89,28 @@ const ConceptIntro = () => {
             <Container className="mt-5">
                 <Row className="justify-content-center">
                     <Col md={10}>
-                        <p className="intro-text" style={{ fontSize: '1.25rem', lineHeight: '1.6' }}>
+                        <p className="intro-text open-sans" style={{ fontSize: '1.25rem', lineHeight: '1.6' }}>
                             {subject.introText}
                         </p>
-                        <h3 className="mt-4">Key Concepts</h3>
-                        <ul>
+                        <h3 className="mt-4" style={{ color: '#0089EA' }}><b>
+                            Key Concepts
+                        </b>
+                        </h3>
+
+                        <Row>
                             {subject.keyConcepts.map((concept, index) => (
-                                <li key={index}>{concept}</li>
+                                <Col key={index} md={4} style={{ color: '#0089EA' }}>
+                                    <div className='concept-box'>
+                                        <p className='my-3'>{concept}</p>
+                                    </div>
+                                </Col>
                             ))}
-                        </ul>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
             <div className="text-center my-5">
-                <Button variant="primary" size="lg" onClick={() => navigate(`/quiz`, { state: { subject } })}>Start The Quiz →</Button>
+                <Button style={{ marginBottom: '30px' }} variant="primary" size="lg" onClick={() => navigate(`/quiz`, { state: { subject } })}>Start The Quiz →</Button>
             </div>
         </>
     );

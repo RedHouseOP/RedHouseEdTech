@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const SubjectCard = ({ subject }) => {
     const navigate = useNavigate();
+    
+    // Define a default image URL
+    const defaultImage = 'https://via.placeholder.com/300x150';
 
     return (
         <>
@@ -50,7 +53,7 @@ const SubjectCard = ({ subject }) => {
                         border-radius: 0.5rem;
                         background-color: #4299e1;
                         color: white;
-                        font-size: 0.875rem;
+                        font-size: 0.9rem;
                         font-weight: 700;
                         text-transform: uppercase;
                         padding: 0.75rem 1.5rem;
@@ -72,19 +75,18 @@ const SubjectCard = ({ subject }) => {
             </style>
             <Card className="custom-card my-4">
                 <div className="custom-image">
-                    <img src={subject.image} alt={subject.name} className="card-img" />
+                    <img src={subject.imagUrl} alt={subject.name} className="card-img" />
                 </div>
                 <Card.Body>
                     <Card.Title>{subject.name}</Card.Title>
-                    <Card.Text>{subject.description}</Card.Text>
+                    <Card.Text className='mb-3'>{subject.description}</Card.Text>
                     <Button 
                         className="custom-button" 
-                        // ! Removed this cuz passing the subjectId through URL isn't a good practice even though we are passing the whole object itself so no need to pass the id through the url again
                         // onClick={() => navigate(`/concept/${subject._id}`, { state: { subject } })}
                         onClick={() => navigate(`/concept`, { state: { subject } })}
                         style={{ cursor: 'pointer'}}
                     >
-                        Start →
+                        Start
                     </Button>
                 </Card.Body>
             </Card>

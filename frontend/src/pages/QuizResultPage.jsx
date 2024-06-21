@@ -1,8 +1,9 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup, Card } from 'react-bootstrap';
 
 const QuizResultPage = () => {
+
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -20,22 +21,59 @@ const QuizResultPage = () => {
 
     const score = calculateScore();
 
+    const calculatePerformance = () => {
+        const percentage = (score / quiz.questions.length) * 100;
+        if (percentage >= 80) return 'Excellent';
+        if (percentage >= 50) return 'Average';
+        return 'Poor';
+    };
+
+    const performance = calculatePerformance();
+
     return (
-        <Container className="results-page mt-5">
+        <Container className="results-page my-5 mt-5 p-4" style={{ borderRadius: '10px', boxShadow: '0 0 15px rgba(0,0,0,0.1)', backgroundColor: '#f8f9fa' }}>
             <Row className="justify-content-center">
                 <Col md={8} className="text-center">
                     <h2>Your Score: {score} / {quiz.questions.length}</h2>
+                    <h3>Your performance was: <span style={{ color: performance === 'Excellent' ? 'green' : performance === 'Average' ? 'orange' : 'red' }}>{performance}</span></h3>
                     <ListGroup className="mt-4">
                         {quiz.questions.map((question, index) => (
-                            <ListGroup.Item key={index}>
-                                <h5>{question.questionText}</h5>
-                                <p>Your Answer: {answers[index]}</p>
-                                <p>Correct Answer: {question.correctAnswer}</p>
-                            </ListGroup.Item>
+                            <Card className="mb-3" key={index} style={{ backgroundColor: '#fff', boxShadow: '0 0 10px rgba(0,0,0,0.05)' }}>
+                                <Card.Body>
+                                    <Card.Title>{question.questionText}</Card.Title>
+                                    <Card.Text>Your Answer: {answers[index]}</Card.Text>
+                                    <Card.Text>Correct Answer: {question.correctAnswer}</Card.Text>
+                                </Card.Body>
+                            </Card>
                         ))}
                     </ListGroup>
-                    <Button className="mt-4" onClick={() => navigate(`/quiz`, { state: { subject } })} variant="primary" size="lg">
+                    <Button
+                        className="mt-4 me-2"
+                        onClick={() => navigate(`/quiz`, { state: { subject } })}
+                        variant="primary"
+                        size="lg"
+                        style={{
+                            backgroundColor: '#007bff',
+                            borderColor: '#007bff',
+                            boxShadow: '0 0 5px rgba(0,0,0,0.1)'
+                        }}
+                    >
                         Retake Quiz
+                    </Button>
+                    <Button
+                        className="mt-4"
+                        
+                        onClick={() => navigate('/subject')}
+                        variant="primary"
+                        size="lg"
+                        style={{
+                            backgroundColor: '#007bff',
+                            borderColor: '#007bff',
+                            boxShadow: '0 0 5px rgba(0,0,0,0.1)',
+                            marginLeft:'12px',
+                        }}
+                    >
+                        Go to Subjects
                     </Button>
                 </Col>
             </Row>

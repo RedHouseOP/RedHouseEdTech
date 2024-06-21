@@ -23,12 +23,12 @@ const getSubjectById = async (req, res) => {
 
 const createSubject = async (req, res) => {
   try {
-    const { name, description, introText, keyConcepts, quizzes } = req.body;
+    const { name, description, introText, keyConcepts, quizzes, imagUrl } = req.body;
     const subjectExists = await Subject.findOne({ name });
     if (subjectExists) {
       return res.status(400).json({ message: "Subject already exists" });
     }
-    const newSubject = new Subject({ name, description, introText, keyConcepts, quizzes });
+    const newSubject = new Subject({ name, description, introText, keyConcepts, quizzes, imagUrl });
     await newSubject.save();
     res.status(201).json(newSubject);
   } catch (error) {
