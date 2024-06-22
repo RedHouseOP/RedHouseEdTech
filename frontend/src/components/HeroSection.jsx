@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ReactTypingEffect from 'react-typing-effect';
@@ -11,12 +10,33 @@ const HeroSection = () => {
     }
 
     const subjects = [
-        "Personal Safety",
-        "Sex Education",
-        "Traffic Rules",
-        "First Aid",
-        "Cyber Safety",
-        "Mental Health Awareness",
+        "Human Rights",
+"Stranger Danger",
+"Cyber Related Safety",
+"Home Safety Tips",
+"Water Safety and Drowning Prevention",
+"Fire Safety and Emergency Preparedness",
+"Social Media Etiquette and Safety",
+"Conflict Resolution and Peer Pressure",
+"Workplace Safety and Occupational Health",
+"Diversity and Inclusion",
+"Understanding Democracy and Citizenship",
+"Quick Response During Natural Disasters",
+"Rights and Responsibilities of Young Citizens",
+"Importance of Voting and Community Participation",
+"Fire Prevention Measures at Home and Workplace",
+"Emergency Response",
+"Sex Education",
+"Signs of Heart Attack and Stroke",
+"Dealing with Cuts, Burns, and Fractures",
+"Basic First Aid Techniques (CPR, Heimlich Maneuver)",
+"Handling Emergencies on the Road",
+"Pedestrian Safety",
+"Defensive Driving Techniques",
+"Road rules and Traffic Signs",
+"Intellectual Property Rights",
+"Civil and Criminal Laws",
+"Legal Rights as a Citizen",
     ];
 
     const buttonStyle = {

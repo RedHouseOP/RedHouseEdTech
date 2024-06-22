@@ -1,5 +1,5 @@
 // frontend/src/pages/SubjectPage.jsx
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { SubjectContext } from '../context/subjectContext';  // Correct import
 import SubjectCard from '../components/SubjectCard';
