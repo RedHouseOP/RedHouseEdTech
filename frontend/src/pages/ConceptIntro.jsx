@@ -15,15 +15,14 @@ const ConceptIntro = () => {
         }
     }, [location, navigate]);
 
-    // ? While rendering of the component the if condition is checked first before useEffect() because useEffect() is not called before the component finishes its rendering.. so to avoid the component to attemp a false rendering if condition returns null resulting in immidiate completion of the component & causes useEffect() to be called which then handles the redirection
-
+    // Ensure component does not render if subject is not present
     if (!location.state || !location.state.subject) {
         return null;
     }
 
     const { subject } = location.state;
 
-    const backgroundImage = 'https://via.placeholder.com/1500x500';
+    const backgroundImage = subject.imageUrl;
 
     return (
         <>
@@ -35,15 +34,15 @@ const ConceptIntro = () => {
                         font-weight: 500;
                         font-style: normal;
                     }
-                        .concept-box {
-                        margin-top:15px;
+                    .concept-box {
+                        margin-top: 15px;
                         border: 2px solid #0089EA;
                         border-radius: 10px;
                         color: #000000;
-                        display:flex;
+                        display: flex;
                         height: 70px;
                         text-align: center;
-                        align-itmes: center;
+                        align-items: center;
                         justify-content: center;
                     }
                 `}
@@ -110,7 +109,9 @@ const ConceptIntro = () => {
                 </Row>
             </Container>
             <div className="text-center my-5">
-                <Button style={{ marginBottom: '30px' }} variant="primary" size="lg" onClick={() => navigate(`/quiz`, { state: { subject } })}>Start The Quiz →</Button>
+                <Button style={{ marginBottom: '30px' }} variant="primary" size="lg" onClick={() => navigate(`/quiz`, { state: { subject } })}>
+                    Start The Quiz →
+                </Button>
             </div>
         </>
     );

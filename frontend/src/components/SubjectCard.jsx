@@ -1,11 +1,9 @@
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 const SubjectCard = ({ subject }) => {
     const navigate = useNavigate();
-    
-    // Define a default image URL
-    const defaultImage = 'https://via.placeholder.com/300x150';
 
     return (
         <>
@@ -25,6 +23,7 @@ const SubjectCard = ({ subject }) => {
                         background: linear-gradient(to right, #4299e1, #2b6cb0);
                         border-radius: 1rem;
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+                        overflow: hidden; 
                     }
 
                     .custom-image img {
@@ -75,14 +74,13 @@ const SubjectCard = ({ subject }) => {
             </style>
             <Card className="custom-card my-4">
                 <div className="custom-image">
-                    <img src={subject.imagUrl} alt={subject.name} className="card-img" />
+                    <img src={subject.imageUrl} alt={subject.name} className="card-img" />
                 </div>
                 <Card.Body>
                     <Card.Title>{subject.name}</Card.Title>
                     <Card.Text className='mb-3'>{subject.description}</Card.Text>
                     <Button 
                         className="custom-button" 
-                        // onClick={() => navigate(`/concept/${subject._id}`, { state: { subject } })}
                         onClick={() => navigate(`/concept`, { state: { subject } })}
                         style={{ cursor: 'pointer'}}
                     >
