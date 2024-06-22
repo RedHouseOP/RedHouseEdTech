@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { startTransition } from 'react';
 import { Container, Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
@@ -18,6 +18,16 @@ function NavbarComponent() {
     }
   };
 
+  const scrollToHeroSection=()=>{
+    const heroSection=document.getElementById('heroSection');
+    if(heroSection){
+      heroSection.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    else{
+      navigate('/',{state:{scrollToHeroSection:true}});
+    }
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     alert("User logged out successfully");
@@ -28,9 +38,6 @@ function NavbarComponent() {
     const aboutSection = document.getElementById('About');
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    else{
-      navigate('/',{State:{scrollToAbout:true}});
     }
   };
 
@@ -72,7 +79,7 @@ function NavbarComponent() {
               </Form>
             </Nav>
             <Nav className="ml-auto d-flex align-items-center">
-              <Nav.Link as={Link} className='mx-2' to="/" style={{ color: '#66FCF1' }}>Home</Nav.Link>
+              <Nav.Link as={Link} className='mx-2' to="/" onClick={scrollToHeroSection} style={{ color: '#66FCF1' }}>Home</Nav.Link>
               <Nav.Link className='mx-2' onClick={scrollToAbout} style={{ color: '#66FCF1' }}>About</Nav.Link>
               <Nav.Link className='mx-2' onClick={scrollToContactUs} style={{ color: '#66FCF1' }}>Support</Nav.Link>
               {isLoggedIn ? (

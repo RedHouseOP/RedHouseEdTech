@@ -17,6 +17,7 @@ app.use(express.json());
 app.use("/api/auth", require("./src/routes/authRoutes"));
 app.use("/api/subjects", require("./src/routes/subjectRoutes"));
 app.use("/api/quizzes", require("./src/routes/quizRoutes"));
+app.use('/api/contactUs',require("./src/routes/contactRoutes"));
 
 // Start the server
 app.listen(port, () => {

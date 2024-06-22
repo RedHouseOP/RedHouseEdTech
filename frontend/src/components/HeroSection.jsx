@@ -1,7 +1,6 @@
 import { Row, Col, Container, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ReactTypingEffect from 'react-typing-effect';
-import heroSectionImg from '../assets/heroSection.jpg';
 
 const HeroSection = () => {
     let navigate = useNavigate();
@@ -54,7 +53,7 @@ const HeroSection = () => {
 
     return (
         <div>
-            <Container className="my-5" fluid style={{
+            <Container id='heroSection' className="my-5" fluid style={{
                 borderRadius: '10px',
                 overflow: 'hidden',
                 boxShadow: '0 0 10px rgba(0,0,0,0.3)',
@@ -98,7 +97,7 @@ const HeroSection = () => {
                         </Button>
                     </Col>
                     <Col md={6} className="text-center">
-                        <img src={heroSectionImg} alt="Hero" className="img-fluid" />
+                        <img src="https://res.cloudinary.com/dq3uubb5s/image/upload/v1719088900/uhgpxvgykahlh4gvecz6.jpg" alt="Hero" className="img-fluid" />
                     </Col>
                 </Row>
             </Container>
