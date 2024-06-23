@@ -11,7 +11,7 @@ const AuthForm = () => {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:1313/api/auth/login', {
+            const response = await fetch('https://redhouseedtech.onrender.com/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const AuthForm = () => {
     const handleSignup = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:1313/api/auth/register', {
+            const response = await fetch('https://redhouseedtech.onrender.com/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -18,7 +18,7 @@ const ContactUs = () => {
 
     const postData = async (formData) => {
         try {
-            const response = await fetch('http://localhost:1313/api/contactUs/contact', {
+            const response = await fetch('https://redhouseedtech.onrender.com/api/contactUs/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
