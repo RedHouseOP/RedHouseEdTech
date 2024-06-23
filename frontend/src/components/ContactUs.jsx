@@ -1,39 +1,39 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const ContactUs = () => {
 
-    const [formData,setFormData]=useState({
-        name:'',
-        email:'',
-        message:''
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
     });
 
-    const handleChange=(e)=>{
-        const {name, value}=e.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [name]:value
+            [name]: value
         });
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:1313/api/contactUs/contact',{
+        fetch('http://localhost:1313/api/contactUs/contact', {
             method: 'POST',
-            headers:  {
-                'content-type':'application/json'
+            headers: {
+                'content-type': 'application/json'
             },
             body: JSON.stringify(formData)
         })
-        .then(response=>response.text())
-        .then(data=>{
-            alert(data);
-        })
-        .catch(error=>{
-            console.error('Error: ',error)
-        });
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+            })
+            .catch(error => {
+                console.error('Error: ', error)
+            });
     };
 
     return (
@@ -60,44 +60,44 @@ const ContactUs = () => {
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formName">
                                 <Form.Label style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#0089EA' }}>Your Name</Form.Label>
-                                <Form.Control 
-                                style={{
-                                    boxShadow: '0 0 10px rgba(0, 137, 234, 0.3)',
-                                    backgroundColor: '#FFFFFF', 
-                                    color: '#0089EA'
-                                }} 
-                                type="text" 
-                                name='name' 
-                                value={formData.name} 
-                                onChange={handleChange}/>
+                                <Form.Control
+                                    style={{
+                                        boxShadow: '0 0 10px rgba(0, 137, 234, 0.3)',
+                                        backgroundColor: '#FFFFFF',
+                                        color: '#0089EA'
+                                    }}
+                                    type="text"
+                                    name='name'
+                                    value={formData.name}
+                                    onChange={handleChange} />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formEmail">
                                 <Form.Label style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#0089EA' }}>Email address</Form.Label>
-                                <Form.Control 
-                                type="email"
-                                name='email'
-                                value={formData.email}
-                                onChange={handleChange}
-                                style={{
-                                    boxShadow: '0 0 10px rgba(0, 137, 234, 0.3)',
-                                    backgroundColor: '#FFFFFF', 
-                                    color: '#0089EA'
-                                }} 
-                                 />
+                                <Form.Control
+                                    type="email"
+                                    name='email'
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    style={{
+                                        boxShadow: '0 0 10px rgba(0, 137, 234, 0.3)',
+                                        backgroundColor: '#FFFFFF',
+                                        color: '#0089EA'
+                                    }}
+                                />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formMessage">
                                 <Form.Label style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#0089EA' }}>Message</Form.Label>
-                                <Form.Control 
-                                name='message'
-                                value={formData.message}
-                                onChange={handleChange}
-                                style={{
-                                    boxShadow: '0 0 10px rgba(0, 137, 234, 0.3)',
-                                    backgroundColor: '#FFFFFF', 
-                                    color: '#0089EA'
-                                }} 
-                                as="textarea" 
-                                rows={6} />
+                                <Form.Control
+                                    name='message'
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    style={{
+                                        boxShadow: '0 0 10px rgba(0, 137, 234, 0.3)',
+                                        backgroundColor: '#FFFFFF',
+                                        color: '#0089EA'
+                                    }}
+                                    as="textarea"
+                                    rows={6} />
                             </Form.Group>
                             <div className='d-flex justify-content-center'>
                                 <Button variant="primary" type="submit" style={{ color: '#0089EA', borderColor: '#0089EA', backgroundColor: '#FFFFFF', outlineColor: '#66FCF1' }}>

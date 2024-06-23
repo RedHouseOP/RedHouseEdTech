@@ -1,9 +1,10 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button, ListGroup, Card } from 'react-bootstrap';
+import useAuth from '../hooks/useAuth';
 
 const QuizResultPage = () => {
-
+    useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 

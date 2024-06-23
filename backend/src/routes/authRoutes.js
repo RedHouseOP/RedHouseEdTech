@@ -1,15 +1,35 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { registerUser, loginUser, logoutUser, fetchUser, updateFinishedSubjects } = require('../controllers/authController');
+const { body } = require("express-validator");
+const {
+  registerUser,
+  loginUser,
+  logoutUser,
+  fetchUser,
+  updateFinishedSubjects,
+} = require("../controllers/authController");
 
-router.post('/register', registerUser);
+const verifyToken = require("../middleware/verifyToken");
 
-router.get('/fetchUser', fetchUser);
+const validateLoginInput = [
+  body("email", "Invalid email address").isEmail(),
+  body("password", "Password must be at least 5 characters long").isLength({
+    min: 5,
+  }),
+];
 
-router.post('/updateFinishedSubjects', updateFinishedSubjects);
+router.post("/register", validateLoginInput, registerUser);
 
-router.post('/login', loginUser);
+router.get("/fetchUser", fetchUser);
 
-router.post('/logout', logoutUser);
+router.post("/updateFinishedSubjects", updateFinishedSubjects);
+
+router.post("/login", validateLoginInput, loginUser);
+
+router.post("/logout", logoutUser);
+
+router.get("/validate-token", verifyToken, (req, res) => {
+  res.status(200).json({ valid: true });
+});
 
 module.exports = router;

@@ -1,9 +1,16 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { validationResult } = require("express-validator");
 const User = require("../models/User");
 
 // Register a new user
 const registerUser = async (req, res) => {
+  const errors = validationResult(req);
+  // Check if there are validation errors
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array(), success });
+  }
+
   const { name, email, password } = req.body;
 
   try {
@@ -59,6 +66,7 @@ const fetchUser = async (req, res) => {
   }
 };
 
+// Update finished subjects for a user
 const updateFinishedSubjects = async (req, res) => {
   const { userId, subjectId } = req.body;
 
@@ -85,32 +93,57 @@ const updateFinishedSubjects = async (req, res) => {
   }
 };
 
+// Login user
 const loginUser = async (req, res) => {
+  const errors = validationResult(req);
+  let success = false;
+
+  // Check if there are validation errors
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array(), success });
+  }
+
   const { email, password } = req.body;
 
   try {
+    // Check if the user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res
+        .status(400)
+        .json({ message: "Invalid email or password", success });
     }
 
+    // Compare the password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid email or password" });
+      return res
+        .status(400)
+        .json({ message: "Invalid email or password", success });
     }
 
+    // Generate a token
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ token });
+    success = true;
+    return res.status(200).json({ token, success });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    console.error("Error during user login:", error); // Log the error for debugging purposes
+    return res.status(500).json({ message: "Server error", success });
   }
 };
 
+// Logout user
 const logoutUser = (req, res) => {
   res.status(200).json({ message: "User logged out successfully" });
 };
 
-module.exports = { registerUser, fetchUser, loginUser, logoutUser, updateFinishedSubjects };
+module.exports = {
+  registerUser,
+  fetchUser,
+  loginUser,
+  logoutUser,
+  updateFinishedSubjects,
+};

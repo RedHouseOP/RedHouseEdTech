@@ -22,6 +22,10 @@ const AuthForm = () => {
             });
             const data = await response.json();
             console.log('Login response:', data);
+            if (!data.success) {
+                alert('Enter valid login credentials')
+                return null;
+            }
             alert("Login successful.. !");
             localStorage.setItem('token', data.token);
             navigate("/");
@@ -92,7 +96,7 @@ const AuthForm = () => {
                                         <Form.Label>Password</Form.Label>
                                         <Form.Control
                                             type="password"
-                                            placeholder="Password"
+                                            placeholder="Password ( Should be of atleast 5 characters )"
                                             value={loginFormData.password}
                                             onChange={handleLoginInputChange}
                                             required
@@ -131,7 +135,7 @@ const AuthForm = () => {
                                         <Form.Label>Password</Form.Label>
                                         <Form.Control
                                             type="password"
-                                            placeholder="Password"
+                                            placeholder="Password ( Should be of atleast 5 characters )"
                                             value={signupFormData.password}
                                             onChange={handleSignupInputChange}
                                             required
