@@ -35,7 +35,8 @@ const QuizResultPage = () => {
         <Container className="results-page my-5 mt-5 p-4" style={{ borderRadius: '10px', boxShadow: '0 0 15px rgba(0,0,0,0.1)', backgroundColor: '#f8f9fa' }}>
             <Row className="justify-content-center">
                 <Col md={8} className="text-center">
-                    <h2>Your Score: {score} / {quiz.questions.length}</h2>
+                    <h1>{`<<<<< Results >>>>>`}</h1>
+                    <h2>Score: {score} / {quiz.questions.length}</h2>
                     <h3>Your performance was: <span style={{ color: performance === 'Excellent' ? 'green' : performance === 'Average' ? 'orange' : 'red' }}>{performance}</span></h3>
                     <ListGroup className="mt-4">
                         {quiz.questions.map((question, index) => (

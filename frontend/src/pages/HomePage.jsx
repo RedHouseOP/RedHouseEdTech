@@ -4,6 +4,7 @@ import FAQ from '../components/Faqs';
 import ContactUs from '../components/ContactUs';
 
 const HomePage = () => {
+    
     const headingStyle = {
         textAlign: 'center',
         marginTop: '20px',

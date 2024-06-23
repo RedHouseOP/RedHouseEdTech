@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Button, ProgressBar } from 'react-bootstrap';
+import { Container, Row, Col, Button, ProgressBar, Form } from 'react-bootstrap';
 import useAuth from '../hooks/useAuth';
 
 const QuizPage = () => {
@@ -21,7 +21,7 @@ const QuizPage = () => {
 
     const [quiz, setQuiz] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [answers, setAnswers] = useState([]);
+    const [answers, setAnswers] = useState({});
     const { subject } = location.state;
 
     useEffect(() => {
@@ -36,10 +36,12 @@ const QuizPage = () => {
         fetchQuiz();
     }, [subject]);
 
-    const handleAnswer = (answer) => {
-        const newAnswers = [...answers];
-        newAnswers[currentQuestionIndex] = answer;
-        setAnswers(newAnswers);
+    const handleAnswer = (e) => {
+        const { value } = e.target;
+        setAnswers({
+            ...answers,
+            [currentQuestionIndex]: value,
+        });
     };
 
     const handleNext = async () => {
@@ -106,6 +108,7 @@ const QuizPage = () => {
     }
 
     const currentQuestion = quiz.questions[currentQuestionIndex];
+    const isAnswerSelected = answers[currentQuestionIndex] !== undefined;
 
     return (
         <Container
@@ -127,27 +130,20 @@ const QuizPage = () => {
                     <h3 className="mt-4">
                         {currentQuestionIndex + 1}. {currentQuestion.questionText}
                     </h3>
-                    <Row className="mt-4">
+                    <Form className="mt-4">
                         {currentQuestion.answerOptions.map((option, index) => (
-                            <Col md={6} className="mb-3" key={index}>
-                                <Button
-                                    onClick={() => handleAnswer(option)}
-                                    variant={answers[currentQuestionIndex] === option ? 'primary' : 'outline-primary'}
-                                    size="lg"
-                                    block="true"
-                                    style={{
-                                        whiteSpace: 'normal',
-                                        wordWrap: 'break-word',
-                                        backgroundColor: answers[currentQuestionIndex] === option ? '#0089EA' : 'transparent',
-                                        borderColor: '#0089EA',
-                                        color: answers[currentQuestionIndex] === option ? '#FFF' : '#000'
-                                    }}
-                                >
-                                    {option}
-                                </Button>
-                            </Col>
+                            <Form.Check
+                                key={index}
+                                type="radio"
+                                name="answer"
+                                label={option}
+                                value={option}
+                                checked={answers[currentQuestionIndex] === option}
+                                onChange={handleAnswer}
+                                style={{ marginBottom: '10px', color: '#000', fontSize: '1.25rem' }} // Increased font size
+                            />
                         ))}
-                    </Row>
+                    </Form>
                     <div className="mt-4 d-flex justify-content-between">
                         <Button
                             onClick={handlePrevious}
@@ -158,6 +154,7 @@ const QuizPage = () => {
                         </Button>
                         <Button
                             onClick={handleNext}
+                            disabled={!isAnswerSelected} // Disable the Next button if no answer is selected
                             style={{ backgroundColor: '#0089EA', borderColor: '#0089EA', color: '#FFF' }}
                         >
                             {currentQuestionIndex < quiz.questions.length - 1 ? 'Next' : 'Submit'}

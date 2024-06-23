@@ -1,11 +1,11 @@
-import React, { startTransition } from 'react';
+import React from 'react';
 import { Container, Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-function NavbarComponent() {
+function NavbarComponent({ setSearchQuery }) {
   let navigate = useNavigate();
-  const location1=useLocation();
-  const location2=useLocation();
+  const location1 = useLocation();
+  const location2 = useLocation();
   const isLoggedIn = localStorage.getItem('token') !== null;
 
   const scrollToContactUs = () => {
@@ -13,18 +13,21 @@ function NavbarComponent() {
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    else{
-      navigate('/',{state:{scrollToContactUs:true}});
+    else {
+      navigate('/', { state: { scrollToContactUs: true } });
     }
   };
 
-  const scrollToHeroSection=()=>{
-    const heroSection=document.getElementById('heroSection');
-    if(heroSection){
-      heroSection.scrollIntoView({behavior:'smooth',block:'start'});
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  const scrollToHeroSection = () => {
+    const heroSection = document.getElementById('heroSection');
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    else{
-      navigate('/',{state:{scrollToHeroSection:true}});
+    else {
+      navigate('/', { state: { scrollToHeroSection: true } });
     }
   };
 
@@ -39,30 +42,33 @@ function NavbarComponent() {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    else {
+      navigate('/', { state: { scrollToAbout: true } });
+    }
   };
 
-  React.useEffect(()=>{
-    if(location1.state && location1.state.scrollToContactUs){
-      const contactSection= document.getElementById('contactUs');
-      if(contactSection){
-        contactSection.scrollIntoView({behavior:'smooth', block:'start'});
+  React.useEffect(() => {
+    if (location1.state && location1.state.scrollToContactUs) {
+      const contactSection = document.getElementById('contactUs');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
-  },[location1.state]);
+  }, [location1.state]);
 
-  React.useEffect(()=>{
-    if(location2.state && location2.state.scrollToAbout){
-      const aboutSection=document.getElementById('About');
-      if(aboutSection){
-        aboutSection.scrollIntoView({behavior:'smooth',block:'start'});
+  React.useEffect(() => {
+    if (location2.state && location2.state.scrollToAbout) {
+      const aboutSection = document.getElementById('About');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
-  },[location2.state]);
+  }, [location2.state]);
 
   return (
     <>
       <Navbar expand="lg" sticky="top" variant="dark" style={{ background: 'linear-gradient(to right, #0D1A1F, #214551)' }}>
-        <Container fluid>
+        <Container fluid className='mx-5'>
           <Navbar.Brand as={Link} to="/" style={{ color: '#66FCF1' }}>RedHouseEdTech</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
@@ -73,13 +79,13 @@ function NavbarComponent() {
                   placeholder="Search"
                   className="mr-2 mx-2"
                   aria-label="Search"
-                  style={{ color: '#66FCF1' }}
+                  onChange={handleSearch} // Update search query on change
+                  style={{ minWidth: '250px', maxWidth: '400px' }} // Adjust the width as needed
                 />
-                <Button variant="outline-light" style={{ color: '#66FCF1' }}>Search</Button>
               </Form>
             </Nav>
             <Nav className="ml-auto d-flex align-items-center">
-              <Nav.Link as={Link} className='mx-2' to="/" onClick={scrollToHeroSection} style={{ color: '#66FCF1' }}>Home</Nav.Link>
+              <Nav.Link as={Link} onClick={scrollToHeroSection} className='mx-2' to="/" style={{ color: '#66FCF1' }}>Home</Nav.Link>
               <Nav.Link className='mx-2' onClick={scrollToAbout} style={{ color: '#66FCF1' }}>About</Nav.Link>
               <Nav.Link className='mx-2' onClick={scrollToContactUs} style={{ color: '#66FCF1' }}>Support</Nav.Link>
               {isLoggedIn ? (

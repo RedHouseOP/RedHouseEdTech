@@ -17,3 +17,13 @@ button {
     font-weight: 500;
     cursor: pointer;
 }
+
+/* Hide scrollbar for Firefox */
+* {
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for WebKit/Blink */
+*::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}

@@ -18,6 +18,7 @@ const validateLoginInput = [
   }),
 ];
 
+
 router.post("/register", validateLoginInput, registerUser);
 
 router.get("/fetchUser", fetchUser);

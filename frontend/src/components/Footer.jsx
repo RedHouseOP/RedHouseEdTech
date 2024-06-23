@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <footer className="bg-dark text-white py-5" style={{ background: 'linear-gradient(to right, #0D1A1F, #214551)' }}>
       <Container>
-        <Row>
+        <Row className='justify-content-evenly'>
           <Col md={4}>
             <h5>RedHouseEdTech</h5>
             <p>
@@ -11,18 +11,9 @@ const Footer = () => {
             </p>
           </Col>
           <Col md={4}>
-            <h5>Quick Links</h5>
-            <Nav className="flex-column">
-              <Nav.Link className="text-white">Home</Nav.Link>
-              <Nav.Link className="text-white">About</Nav.Link>
-              <Nav.Link className="text-white">Support</Nav.Link>
-              <Nav.Link className="text-white">Login</Nav.Link>
-            </Nav>
-          </Col>
-          <Col md={4}>
             <h5>Contact Us</h5>
-            <p>Email: support@redhouseedtech.com</p>
-            <p>Phone: +123 456 7890</p>
+            <p>Email: redhousedtech@gmail.com</p>
+            <p>Phone: +91 988xxxxxxx</p>
             <div className="d-flex">
               <a href="https://www.facebook.com" className="text-white me-3"><Image size={30} /></a>
               <a href="https://www.twitter.com" className="text-white me-3"><Image size={30} /></a>

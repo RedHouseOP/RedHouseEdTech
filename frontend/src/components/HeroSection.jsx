@@ -10,49 +10,99 @@ const HeroSection = () => {
 
     const subjects = [
         "Human Rights",
-"Stranger Danger",
-"Cyber Related Safety",
-"Home Safety Tips",
-"Water Safety and Drowning Prevention",
-"Fire Safety and Emergency Preparedness",
-"Social Media Etiquette and Safety",
-"Conflict Resolution and Peer Pressure",
-"Workplace Safety and Occupational Health",
-"Diversity and Inclusion",
-"Understanding Democracy and Citizenship",
-"Quick Response During Natural Disasters",
-"Rights and Responsibilities of Young Citizens",
-"Importance of Voting and Community Participation",
-"Fire Prevention Measures at Home and Workplace",
-"Emergency Response",
-"Sex Education",
-"Signs of Heart Attack and Stroke",
-"Dealing with Cuts, Burns, and Fractures",
-"Basic First Aid Techniques (CPR, Heimlich Maneuver)",
-"Handling Emergencies on the Road",
-"Pedestrian Safety",
-"Defensive Driving Techniques",
-"Road rules and Traffic Signs",
-"Intellectual Property Rights",
-"Civil and Criminal Laws",
-"Legal Rights as a Citizen",
+        "Stranger Danger",
+        "Cyber Related Safety",
+        "Home Safety Tips",
+        "Water Safety and Drowning Prevention",
+        "Fire Safety and Emergency Preparedness",
+        "Social Media Etiquette and Safety",
+        "Conflict Resolution and Peer Pressure",
+        "Workplace Safety and Occupational Health",
+        "Diversity and Inclusion",
+        "Understanding Democracy and Citizenship",
+        "Quick Response During Natural Disasters",
+        "Rights and Responsibilities of Young Citizens",
+        "Importance of Voting and Community Participation",
+        "Fire Prevention Measures at Home and Workplace",
+        "Emergency Response",
+        "Sex Education",
+        "Signs of Heart Attack and Stroke",
+        "Dealing with Cuts, Burns, and Fractures",
+        "Basic First Aid Techniques (CPR, Heimlich Maneuver)",
+        "Handling Emergencies on the Road",
+        "Pedestrian Safety",
+        "Defensive Driving Techniques",
+        "Road rules and Traffic Signs",
+        "Intellectual Property Rights",
+        "Civil and Criminal Laws",
+        "Legal Rights as a Citizen",
     ];
 
-    const buttonStyle = {
-        color: '#0089EA',
-        backgroundColor: '#FFF',
-        borderColor: '#0089EA',
-        transition: 'all 0.3s ease',
-    };
+    // const buttonStyle = {
+    //     color: '#0089EA',
+    //     backgroundColor: '#FFF',
+    //     borderColor: '#0089EA',
+    //     transition: 'all 0.3s ease',
+    // };
 
-    const buttonHoverStyle = {
-        color: '#FFF',
-        backgroundColor: '#0089EA',
-        borderColor: '#0089EA',
-    };
+    // const buttonHoverStyle = {
+    //     color: '#FFF',
+    //     backgroundColor: '#0089EA',
+    //     borderColor: '#0089EA',
+    // };
 
     return (
         <div>
+            <style type="text/css">
+                {`
+                    .getStartedButton {
+                    --color: #0077ff;
+                    font-family: inherit;
+                    display: inline-block;
+                    width: 7em;
+                    text-align: centre;
+                    align-items: 'center',
+                    justify-content: center;
+                    height: 2.6em;
+                    line-height: 2.5em;
+                    overflow: hidden;
+                    cursor: pointer;
+                    margin: 20px;
+                    font-size: 17px;
+                    padding: 0px;
+                    z-index: 1;
+                    background-color: #FFF;
+                    color: var(--color);
+                    border: 2px solid var(--color);
+                    border-radius: 6px;
+                    position: relative;
+                    }
+
+                    .getStartedButton::before {
+                    position: absolute;
+                    content: "";
+                    background: var(--color);
+                    width: 150px;
+                    height: 200px;
+                    z-index: -1;
+                    border-radius: 50%;
+                    }
+
+                    .getStartedButton:hover {
+                    color: white;
+                    }
+
+                    .getStartedButton:before {
+                    top: 100%;
+                    left: 100%;
+                    transition: 0.5s all;
+                    }
+
+                    .getStartedButton:hover::before {
+                    top: -65px;
+                    left: -30px;
+                    }
+               `} </style>
             <Container id='heroSection' className="my-5" fluid style={{
                 borderRadius: '10px',
                 overflow: 'hidden',
@@ -85,16 +135,7 @@ const HeroSection = () => {
                                 }}
                             />
                         </h3>
-                        <Button
-                            style={buttonStyle}
-                            onMouseEnter={(e) => e.currentTarget.style = { ...buttonStyle, ...buttonHoverStyle }}
-                            onMouseLeave={(e) => e.currentTarget.style = buttonStyle}
-                            onClick={handleOnClick}
-                            variant="primary"
-                            size="lg"
-                        >
-                            Get Started
-                        </Button>
+                        <button className='getStartedButton' onClick={handleOnClick}>Get Started</button>
                     </Col>
                     <Col md={6} className="text-center">
                         <img src="https://res.cloudinary.com/dq3uubb5s/image/upload/v1719088900/uhgpxvgykahlh4gvecz6.jpg" alt="Hero" className="img-fluid" />
